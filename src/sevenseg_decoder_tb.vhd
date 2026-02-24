@@ -58,25 +58,25 @@ begin
     begin
     
         w_sw <= x"0"; wait for 10 ns;
-            assert w_seg = "0111111" report "error on x0" severity failure;
+            assert w_seg = "1000000" report "error on x0" severity failure;
         w_sw <= x"1"; wait for 10 ns;
-            assert w_seg = "0000110" report "error on x1" severity failure;
+            assert w_seg = "1111001" report "error on x1" severity failure;
         w_sw <= x"2"; wait for 10 ns;
-            assert w_seg = "1011011" report "error on x2" severity failure;
+            assert w_seg = "0100100" report "error on x2" severity failure;
         w_sw <= x"3"; wait for 10 ns;
-            assert w_seg = "1001111" report "error on x3" severity failure;
+            assert w_seg = "0110000" report "error on x3" severity failure;
         w_sw <= x"4"; wait for 10 ns;
-            assert w_seg = "1100110" report "error on x4" severity failure;
+            assert w_seg = "0011001" report "error on x4" severity failure;
         w_sw <= x"5"; wait for 10 ns;
-            assert w_seg = "1101101" report "error on x5" severity failure;
+            assert w_seg = "0010010" report "error on x5" severity failure;
         w_sw <= x"6"; wait for 10 ns;
-            assert w_seg = "1111101" report "error on x6" severity failure;
+            assert w_seg = "0000010" report "error on x6" severity failure;
         w_sw <= x"7"; wait for 10 ns;
-            assert w_seg = "0000111" report "error on x7" severity failure;
+            assert w_seg = "1111000" report "error on x7" severity failure;
         w_sw <= x"8"; wait for 10 ns;
-            assert w_seg = "1111111" report "error on x8" severity failure;
+            assert w_seg = "0000000" report "error on x8" severity failure;
         w_sw <= x"9"; wait for 10 ns;
-            assert w_seg = "1100111" report "error on x9" severity failure;
+            assert w_seg = "0011000" report "error on x9" severity failure;
         wait;
      end process;
 
