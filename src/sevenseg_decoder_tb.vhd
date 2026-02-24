@@ -32,13 +32,52 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity sevenseg_decoder_tb is
-    Port ( i_Hex : in STD_LOGIC_VECTOR (3 downto 0);
-           o_seg_n : in STD_LOGIC_VECTOR (6 downto 0));
 end sevenseg_decoder_tb;
 
-architecture Behavioral of sevenseg_decoder_tb is
+architecture test_bench of sevenseg_decoder_tb is
+
+   component sevenseg_decoder is
+    port( i_Hex : in STD_LOGIC_VECTOR (3 downto 0);
+          o_seg_n : out STD_LOGIC_VECTOR (6 downto 0)
+          );
+end component;
+
+    signal w_sw : std_logic_vector (3 downto 0) := (others=> '0');
+    signal w_seg : std_logic_vector (6 downto 0);
 
 begin
 
+    sevenseg_decoder_inst : sevenseg_decoder port map (
+        i_Hex => w_sw,
+        o_seg_n => w_seg
+        );
+        
+        
+        
+    test_process : process
+    begin
+    
+        w_sw <= x"0"; wait for 10 ns;
+            assert w_seg = "0111111" report "error on x0" severity failure;
+        w_sw <= x"1"; wait for 10 ns;
+            assert w_seg = "0000110" report "error on x1" severity failure;
+        w_sw <= x"2"; wait for 10 ns;
+            assert w_seg = "1011011" report "error on x2" severity failure;
+        w_sw <= x"3"; wait for 10 ns;
+            assert w_seg = "1001111" report "error on x3" severity failure;
+        w_sw <= x"4"; wait for 10 ns;
+            assert w_seg = "1100110" report "error on x4" severity failure;
+        w_sw <= x"5"; wait for 10 ns;
+            assert w_seg = "1101101" report "error on x5" severity failure;
+        w_sw <= x"6"; wait for 10 ns;
+            assert w_seg = "1111101" report "error on x6" severity failure;
+        w_sw <= x"7"; wait for 10 ns;
+            assert w_seg = "0000111" report "error on x7" severity failure;
+        w_sw <= x"8"; wait for 10 ns;
+            assert w_seg = "1111111" report "error on x8" severity failure;
+        w_sw <= x"9"; wait for 10 ns;
+            assert w_seg = "1100111" report "error on x9" severity failure;
+        wait;
+     end process;
 
-end Behavioral;
+end test_bench;
